@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Link } from "react-router-dom";
 import "@splidejs/splide/css";
 
 function Popular() {
@@ -39,9 +40,10 @@ function Popular() {
         }}
       >
         
-        {data.map((recipe) => {
+        {data?.map((recipe) => {
           return (
             <SplideSlide key={recipe.id}>
+              <Link to={"/recipe/" + recipe.id}>
               <div key={recipe.id}>
                 <img
                   className="rounded-xl opacity-80 cursor-pointer hover:opacity-100 transition-opacity  object-cover w-[100%] h-[100%] mt-4"
@@ -51,6 +53,7 @@ function Popular() {
 
                 <h1 className="h-10 text-center p-5">{recipe.title}</h1>
               </div>
+              </Link>
             </SplideSlide>
           );
         })}
